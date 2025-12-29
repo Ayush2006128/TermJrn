@@ -8,6 +8,11 @@ namespace TermJrn.lib
         {
             try
             {
+                string? directory = Path.GetDirectoryName(filePath);
+                if (!Directory.Exists(directory))
+                {
+                    _ = Directory.CreateDirectory(directory ?? "TermJournal");
+                }
                 File.WriteAllText(filePath, notes);
             }
             catch (Exception ex)
