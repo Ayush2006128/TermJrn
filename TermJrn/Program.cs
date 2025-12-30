@@ -16,8 +16,16 @@
             }
             else
             {
-                lib.FileOperations.SaveNotesToFile(filePath, args[0]);
-                Console.WriteLine($"Noted { args[0] } to { filePath }");
+                if (args[0] == "read")
+                {
+                    string notes = lib.FileOperations.LoadNotesFromFile(filePath);
+                    Console.WriteLine(notes);
+                }
+                else
+                {
+                    string note = args[0];
+                    lib.FileOperations.SaveNotesToFile(filePath, note);
+                }
             }
         }
     }

@@ -20,5 +20,25 @@ namespace TermJrn.lib
                 Console.WriteLine($"An error occurred while saving notes: {ex.Message}");
             }
         }
+        public static string LoadNotesFromFile(string filePath)
+        {
+            try
+            {
+                if (File.Exists(filePath))
+                {
+                    return File.ReadAllText(filePath);
+                }
+                else
+                {
+                    Console.WriteLine("File does not exist.");
+                    return string.Empty;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while loading notes: {ex.Message}");
+                return string.Empty;
+            }
+        }
     }
 }
